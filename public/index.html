@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script defer src="./index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
+</head>
+
+<body>
+    <script>
+        //on load
+        window.onload = function() {
+            handleClick('articles','GET')
+        }
+    </script>
+    <div id="article">
+        <h1>Articles</h1>
+        <h1>Changer le nom</h1>
+        <div style="margin-top: 25px;">
+            <select name="" id="articleSelect"></select>
+            <input type="text" placeholder="Change article Name" id="name">
+            <button type="text" placeholder="Change article Name" onclick="handleClick('articles/1','PUT')">Valider</button>
+        </div>
+        <h1>Ajouter un article</h1>
+        <div style="margin-top:25px;">
+            <input type="text" placeholder="Add article Name" id="nameAdd">
+            <br/>
+            <input type="text" placeholder="Add article theme" id="themeAdd">
+            <button type="text" placeholder="Add article Name" onclick="handleClick('articles/add','POST')">Valider</button>
+        </div>
+        <h1>Supprimer un article</h1>
+        <div style="margin-top:25px;">
+            <p>Supprimer l'article 1    </p>
+            <button type="text" placeholder="Add article Name" onclick="handleClick('articles/delete','DELETE')">Supprimer</button>
+        </div>
+        
+    </div>
+</body>
+
+</html>
