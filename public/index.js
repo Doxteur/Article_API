@@ -36,6 +36,8 @@ function printData(data) {
     //code here
     try{
         let select = document.getElementById("articleSelect");
+        let selectDelete = document.getElementById("articleSelectDelete");
+
         
         for(let i = 0; i < data.articles.length; i++) {
             let option = document.createElement("option");
@@ -43,7 +45,12 @@ function printData(data) {
             option.value = data.articles[i].id;
             select.add(option);
         }
-
+        for(let i = 0; i < data.articles.length; i++) {
+            let option = document.createElement("option");
+            option.text = data.articles[i].title;
+            option.value = data.articles[i].id;
+            selectDelete.add(option);
+        }
         document.getElementById("debugArticle").innerHTML = JSON.stringify(data);
         
     }catch(err){
@@ -69,9 +76,11 @@ function getData(url) {
 }
 
 function putData(url) {
-    let name = document.getElementById("name").value;
+    let title = document.getElementById("name").value;
+    let articleSelect = document.getElementById("articleSelect").value;
     let body = {
-        "name": name
+        "id": articleSelect,        
+        "title": title
     }
 
     return new Promise((resolve, reject) => {
@@ -85,11 +94,11 @@ function putData(url) {
 }
 
 function postData(url) {
-    let name = document.getElementById("nameAdd").value;
+    let title = document.getElementById("nameAdd").value;
     let theme = document.getElementById("themeAdd").value;
     
     let body = {
-        "name": name,
+        "title": title,
         "theme": theme
     }
 
@@ -104,11 +113,17 @@ function postData(url) {
 }
 
 function deleteData(url){
+    let id = document.getElementById("articleSelectDelete").value;
+    let body = {
+        "id": id
+    }
+    
     return new Promise((resolve, reject) => {
-        axios.delete(url).then((res) => {
+        axios.delete(url,body).then((res) => {
             return resolve(res.data);
         }).catch((err) => {
             return reject(err);
         });
+        
     });
 }

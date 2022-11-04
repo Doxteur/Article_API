@@ -26,7 +26,7 @@
         <div style="margin-top: 25px;">
             <select name="" id="articleSelect"></select>
             <input type="text" placeholder="Change article Name" id="name">
-            <button type="text" placeholder="Change article Name" onclick="handleClick('articles/1','PUT')">Valider</button>
+            <button type="text" placeholder="Change article Name" onclick="handleClick('articles/modify','PUT')">Valider</button>
         </div>
         <h1>Ajouter un article</h1>
         <div style="margin-top:25px;">
@@ -37,7 +37,8 @@
         </div>
         <h1>Supprimer un article</h1>
         <div style="margin-top:25px;">
-            <p>Supprimer l'article 1    </p>
+            <select name="" id="articleSelectDelete"></select>
+
             <button type="text" placeholder="Add article Name" onclick="handleClick('articles/delete','DELETE')">Supprimer</button>
         </div>
         
