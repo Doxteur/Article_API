@@ -9,18 +9,29 @@ module.exports = (app) => {
     app.put('/articles/modify', (req, res) => {
         let id = req.body.id;
         let title = req.body.title;
-        
+        let theme = req.body.theme;
+
         let article = json.articles.find((article) => {
             return article.id == id;
         });
         article.title = title;
-        res.send(article);
+        article.theme = theme;
+        fs.writeFile('./articles.json', JSON.stringify(json), (err) => {
+            res.send(article);
+        });
     });
 
     app.post('/articles/add', (req, res) => {
         let title = req.body.title;
         let theme = req.body.theme;
-        let id = json.articles.length + 1;
+        
+        //check for all id and find the max id
+        let maxId = json.articles.reduce((max, article) => {
+            return article.id > max ? article.id : max;
+        }, 0);
+            
+        let id = maxId +1;
+
         let article = {
             id: id,
             title: title,
@@ -31,7 +42,7 @@ module.exports = (app) => {
             if (err) throw err;
             console.log('The file has been saved!');
         });
-        
+
         res.send(article);
     });
 
@@ -47,5 +58,5 @@ module.exports = (app) => {
         });
         res.send(article);
     });
-    
+
 }
