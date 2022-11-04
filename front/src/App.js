@@ -3,6 +3,7 @@ import './App.css';
 import React,{useState,useEffect} from 'react';
 
 import Articles from './components/Articles';
+import FormAddArticle from './components/FormAddArticle';
 
 function App() {
   const [articles,setArticles] = useState([]);
@@ -17,6 +18,7 @@ function App() {
 
   return (
     <div className='container m-auto'>
+      <FormAddArticle articles={articles} setArticles={setArticles}/>
       <Articles articles={articles} setArticles={setArticles} />
     </div>
   );

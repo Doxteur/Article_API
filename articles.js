@@ -1,4 +1,5 @@
 const json = require('./articles.json');
+const fs = require('fs');
 
 
 module.exports = (app) => {
@@ -26,6 +27,11 @@ module.exports = (app) => {
             theme: theme
         };
         json.articles.push(article);
+        fs.writeFile('./articles.json', JSON.stringify(json), (err) => {
+            if (err) throw err;
+            console.log('The file has been saved!');
+        });
+        
         res.send(article);
     });
 
@@ -35,6 +41,10 @@ module.exports = (app) => {
             return article.id == id;
         });
         json.articles.splice(json.articles.indexOf(article), 1);
+        fs.writeFile('./articles.json', JSON.stringify(json), (err) => {
+            if (err) throw err;
+            console.log('The file has been saved!');
+        });
         res.send(article);
     });
     
