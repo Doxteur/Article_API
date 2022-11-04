@@ -10,38 +10,69 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 
+
 </head>
 
-<body>
+<body data-theme="light">
     <script>
         //on load
-        window.onload = function() {
-            handleClick('articles','GET')
+        window.onload = function () {
+            handleClick('articles', 'GET')
         }
     </script>
-    <div id="article">
-        <h1>Articles</h1>
-        <h2 id="debugArticle"></h2>
-        <h1>Changer le nom</h1>
-        <div style="margin-top: 25px;">
-            <select name="" id="articleSelect"></select>
-            <input type="text" placeholder="Change article Name" id="name">
-            <button type="text" placeholder="Change article Name" onclick="handleClick('articles/modify','PUT')">Valider</button>
+
+    <!-- Header -->
+    <div class="navbar bg-base-100">
+        <div class="flex-1">
+            <a class="btn btn-ghost normal-case text-xl">daisyUI</a>
         </div>
-        <h1>Ajouter un article</h1>
+        <div class="flex-none">
+            <button class="btn btn-square btn-ghost">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    class="inline-block w-5 h-5 stroke-current">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z">
+                    </path>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+
+    <!-- Main -->
+
+    <div id="article" class="text">
+
+
+        <div id="articleLists">
+
+        </div>
+
+        <h1 class="text-4xl font-bold">Articles Debug</h1>
+        <h2 id="debugArticle"></h2>
+        <h1 class="text-4xl font-bold">Changer le nom</h1>
+        <div style="margin-top: 25px;">
+            <select name="" id="articleSelect" class="select"></select>
+            <input type="text" placeholder="Change article Name" id="name" class="input">
+            <button type="text" placeholder="Change article Name"
+                onclick="handleClick('articles/modify','PUT')" class="btn btn-success">Valider</button>
+        </div>
+        <h1 class="text-4xl font-bold">Ajouter un article</h1>
         <div style="margin-top:25px;">
             <input type="text" placeholder="Add article Name" id="nameAdd">
-            <br/>
+            <br />
             <input type="text" placeholder="Add article theme" id="themeAdd">
-            <button type="text" placeholder="Add article Name" onclick="handleClick('articles/add','POST')">Valider</button>
+            <button type="text" placeholder="Add article Name"
+                onclick="handleClick('articles/add','POST')" class="btn btn-success">Valider</button>
         </div>
-        <h1>Supprimer un article</h1>
+        <h1 class="text-4xl font-bold">Supprimer un article</h1>
         <div style="margin-top:25px;">
             <select name="" id="articleSelectDelete"></select>
 
-            <button type="text" placeholder="Add article Name" onclick="handleClick('articles/delete','DELETE')">Supprimer</button>
+            <button type="text" placeholder="Add article Name"
+                onclick="handleClick('articles/delete','DELETE')">Supprimer</button>
         </div>
-        
+
     </div>
 </body>
 

@@ -19,6 +19,11 @@
             "id": 4,
             "title": "Pollution fécales des baleines",
             "theme": "ecologie"
+        },
+        {
+            "id": 5,
+            "title": "La guerre des étoiles",
+            "theme": "cinema"
         }
     ]
 }
