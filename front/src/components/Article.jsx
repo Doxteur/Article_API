@@ -13,7 +13,6 @@ function Article({ article, articles, setArticles }) {
 
         //remove article from the list
         const newArticles = articles.articles.filter(article => article.id !== id);
-        console.log(newArticles);
         //add newArticles to a array name articles
         setArticles({ articles: newArticles });
         // setArticles(newArticles);
@@ -24,18 +23,15 @@ function Article({ article, articles, setArticles }) {
     const handleModalValue = (id) => {
         const modalContent = document.getElementById("modalContent");
 
-        const article = articles.articles.find(article => article.id === id);
-
+        const articleFiltered = articles.articles.find(article => article.id === id);
         //modify article
         modalContent.innerHTML = `
         <h1 class="font-bold text-xl">Modifier l'article</h1>
         <label class="label mt-4">Le Titre</label>
-        <input type="input" id="inputTitleModify" class="input input-bordered " value="${article.title}" />
+        <input type="input" id="inputTitleModify" class="input input-bordered " value="${articleFiltered.title}" />
         <label class="label mt-2">Le Theme</label>
-        <input type="input" id="inputThemeModify" class="input input-bordered " value="${article.theme}" />
-
-        <input type="input" id="inputIdModify" class="input input-bordered " value="${article.id}"  hidden/>
-
+        <input type="input" id="inputThemeModify" class="input input-bordered " value="${articleFiltered.theme}" />
+        <input type="input" id="inputIdModify" class="input input-bordered " value="${articleFiltered.id}"  hidden/>
                         `
     }
 
@@ -47,7 +43,7 @@ function Article({ article, articles, setArticles }) {
                 <p>Theme: {article.theme}</p>
             </div>
             <div className="card-actions p-4">
-                <label htmlFor="my-modal-4" className="btn btn-warning btn-sm" onClick={(e) => handleModalValue(article.id)} >Modifier</label>
+                <label htmlFor="my-modal-4" className="btn btn-warning btn-sm" onClick={(e) => handleModalValue(article.id)}>Modifier</label>
                 <button className="btn btn-error btn-sm" onClick={(e) => handleDelete(article.id)}>Supprimer</button>
             </div>
         </div >

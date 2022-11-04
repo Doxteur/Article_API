@@ -14,8 +14,10 @@ function FormAddArticle({ articles, setArticles }) {
         }
 
         try {
-            axios.post('http://localhost:3001/articles/add', body);
-            setArticles({ articles: [...articles.articles, body] });
+            axios.post('http://localhost:3001/articles/add', body)
+            .then(res => {
+                setArticles({ articles: [...articles.articles, res.data] });
+            })
         }
         catch (error) {
             console.log(error);

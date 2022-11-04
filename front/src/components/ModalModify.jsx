@@ -16,7 +16,6 @@ function ModalModify({ articles, setArticles }) {
         axios.put(`http://localhost:3001/articles/modify/`, articleModify);
 
         //Update article from react the list
-        console.log("Mon id", id)
         const newArticles = articles.articles.map(article => {
             if (article.id == id) {
                 article.title = inputTitleModify;
@@ -25,7 +24,6 @@ function ModalModify({ articles, setArticles }) {
             return article;
         });
 
-        console.log(newArticles);
         setArticles({ articles: newArticles });
 
         //close modal
