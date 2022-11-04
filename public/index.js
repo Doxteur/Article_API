@@ -32,10 +32,10 @@ function handleClick(uri,request) {
 }
 
 function printData(data) {
+
     //code here
     try{
         let select = document.getElementById("articleSelect");
-        console.log(data);
         
         for(let i = 0; i < data.articles.length; i++) {
             let option = document.createElement("option");
@@ -44,8 +44,8 @@ function printData(data) {
             select.add(option);
         }
 
+        document.getElementById("debugArticle").innerHTML = JSON.stringify(data);
         
-        console.log(data);
     }catch(err){
         handleError(err);
     }
